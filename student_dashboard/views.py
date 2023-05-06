@@ -24,7 +24,17 @@ def studentTestFun(request,id):
             'options': options_text
         }
         data.append(question_data)
+        print(data)
     return render(request, 'live_test/index.html', {"data": data})
+
+
+# def studentTestFun(request,id):
+#     test_paper = TestPaper.objects.get(id=1)
+#     question = test_paper.get_question_by_index(2)
+
+    print("qqqqq",question)
+    return render(request, 'live_test/index.html', {"data": question})
+
 
 
 def studentExamPagetFun(request):

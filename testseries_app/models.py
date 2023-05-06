@@ -26,7 +26,7 @@ class TestSeries(models.Model):
     name = models.CharField(max_length=255)
     overview = models.CharField(max_length=500)
     isPopularSeries1 = models.BooleanField(default=False)
-    isNewSeries1 = models.BooleanField(default=False)
+    isNewSeries1 = models.BooleanField(default=False, verbose_name='isUpcoming')
     test_categories = models.ForeignKey(TestSeriesCategory, on_delete=models.CASCADE)
     test_logo = models.ImageField(upload_to='exam_logo/', blank=True)
 
@@ -35,6 +35,10 @@ class TestSeries(models.Model):
 
     def get_free_test_paper_count(self):
         return TestPaper.objects.filter(test_category=self, isFree=True).count()
+    
+    
+    def get_all_test_papers(self):
+        return TestPaper.objects.filter(test_category = self)
 
     def __str__(self):
         return self.name
@@ -48,6 +52,7 @@ class TestPaper(models.Model):
     total_question = models.IntegerField()
     test_year = models.DateField()
     isFree = models.BooleanField()
+    totalTIme = models.IntegerField(default=0)
 
     def get_total_questions(self):
         return Question.objects.filter(test_paper=self).count()
@@ -57,6 +62,17 @@ class TestPaper(models.Model):
 
     def __str__(self):
         return self.test_category.name + " " + self.test_series_name
+
+    def get_question_by_index(self, index):
+        """
+        Returns the question at the given index for this test paper, or None if the index is out of range.
+        """
+        questions = self.question_set.order_by('id')
+        print("aaaa",questions)
+        try:
+            return questions[index]
+        except IndexError:
+            return None
 
 
 class Question(models.Model):

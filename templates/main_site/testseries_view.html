@@ -18,16 +18,19 @@
     <main class="blog-standard">
 
         <div class="container">
-            <h1 class="oleez-page-title wow fadeInUp">Course Details</h1>
             <div class="row">
+                <h4>{{name_of_series}}</h4>
                     <div class="col-md-8">
                         {{exam_descp|safe}}
                     </div>
                     <div>
                     {% comment %} <div class="col-md-4"> {% endcomment %}
-                        <b><p>Test Series</p></b>
+                        {% comment %} <b><h5>Test Papers </h5></b> {% endcomment %}
                         <div class="container">
                             <div class="row">
+                            </br>
+                            <br/>
+                                <h6 class="p-3">Test Papers</h6>
                                 {% for test in test_papers%}
                                <div class="col-md-12 p-2">
                                   <nav class="navbar navbar-expand-md navbar-light bg-light">

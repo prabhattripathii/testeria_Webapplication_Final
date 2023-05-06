@@ -139,11 +139,7 @@
 
       </div>
     </section><!-- End Why Us Section -->
-
-
-
     <!-- ======= Features Section ======= -->
-
     <div class="container">
       <div class="section-title">
         <h2>Popular and</h2>
@@ -155,13 +151,15 @@
       <div class="container" data-aos="fade-up">
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
-          {% for i in popular_Exams%}
+          {% for i in UpcomingExam%}
+          {% if i.isNewSeries1%}
           <div class="col-lg-3 col-md-4">
             <div class="icon-box">
               <i class="ri-store-line" style="color: #ffbb2c;"></i>
               <h3><a href="{% url 'details' id=i.id %}">{{i.name}}</a></h3>
             </div>
           </div>
+            {% endif %}
           {%endfor%}
         </div>
 
@@ -179,6 +177,7 @@
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
           {% for test in test_series %}
+          {%if test.isPopularSeries1%}
           <!-- Starts Course Item-->
               <div class="col-lg-3 col-md-5 d-flex ">
             <div class="course-item">
@@ -194,14 +193,14 @@
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
 <!--                    <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">-->
-                    <button class="btn" style="background: #0ad0f4;">View Test Series</button>
+                    <button class="btn" style="background: #0ad0f4;"><a href="{%url 'testpapers' id=test.id %}">View Test Series</a></button>
                   </div>
 
                   </div>
                 </div>
               </div>
             </div>
-
+            {% endif %}
          {% endfor %}
           <!-- End Course Item-->
 

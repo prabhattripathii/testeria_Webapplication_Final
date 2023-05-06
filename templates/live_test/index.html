@@ -12,6 +12,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"
         referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{%static 'live_test/css/style.css'%}" />
+    <style>
+        .not-selected {
+  color: red;
+}
+
+    </style>
 </head>
 
 <body>
@@ -24,9 +30,8 @@
 
             <div class="bg-secondary-subtle px-2 py-1">
                 Time Left
-                <span class="bg-secondary text-white px-1" id="hour-left">00</span> :
-                <span class="bg-secondary text-white px-1" id="min-left">00</span> :
-                <span class="bg-secondary text-white px-1" id="sec-left">00</span>
+                <span class="bg-secondary text-white px-1" id="timer" ></span> :
+
             </div>
             <div class="d-flex justify-content-between">
                 <button class="btn btn-sm border border-info text-info rounded-1 mx-2">Switch Full Screen</button>
@@ -46,7 +51,7 @@
                 <!-- Question Number Display -->
                 <div class="d-flex justify-content-between align-items-center py-1 px-2 border">
                     <div class="fw-medium">
-                        Question No. 1
+                        Question No. <span id="question-number"></span>
                     </div>
                     <div class="d-flex justify-content-center gap-3 align-items-center" style="font-size: 0.8rem;">
                         <div>
@@ -58,11 +63,9 @@
                                 style="font-size: 0.8rem; padding-block: 0.05rem;">-0.5</span>
                         </div>
                         <div>
-                            Time
-                            <br />
-                            <span style="font-size: 0.8rem;">
-                                00:00
-                            </span>
+
+
+
                         </div>
                         <div>
                             View in
@@ -75,42 +78,35 @@
                     </div>
                 </div>
                 <!--Question and MCQs -->
-                <div class="px-2 py-2 question-display-area">
-                    Select the correct option that indicates the arrangement of the given words in the order in
-                    which they appera in an English dictionary
-                    <br />
-                    <ol>
-                        <li>Petitionary</li>
-                        <li>Petitioning</li>
-                        <li>Petition</li>
-                        <li>Petitioned</li>
-                    </ol>
-                    <div>
-                        <input type="radio" name="question" value="" id="choice-1">
-                        <label for="choice-1">3, 1, 4, 5, 2</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="question" value="" id="choice-2">
-                        <label for="choice-2">3, 1, 5, 4, 2</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="question" value="" id="choice-3">
-                        <label for="choice-3">4, 1, 2, 3, 5</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="question" value="" id="choice-4">
-                        <label for="choice-4">1, 2, 3, 4, 5</label>
-                    </div>
-                </div>
-                <div
-                    class="mt-auto px-2 py-2 d-flex justify-content-between flex-wrap gap-2 bg-secondary-subtle border-top">
+
+
+
+
+<div id="question-container">
+  <div id="question"></div>
+  <form id="answer-form">
+    <div id="options"></div>
+    <div>
+      <button type="button" id="back-btn">Back</button>
+
+    </div>
+  </form>
+</div>
+
+                <div id="results-container" style="display: none;">
+  <h2>Results</h2>
+  <div id="score"></div>
+  <div id="review"></div>
+</div>
+
+                <div class="mt-auto px-2 py-2 d-flex justify-content-between flex-wrap gap-2 bg-secondary-subtle border-top">
                     <div>
                         <button class="btn btn-sm border-info-subtle bg-info-subtle rounded-1">Mark for Review &
                             Next</button>
                         <button class="btn btn-sm border-info-subtle bg-info-subtle rounded-1">Clear Response</button>
                     </div>
                     <div>
-                        <button class="btn btn-sm bg-info text-white rounded-1">Save & Next</button>
+                        <button class="btn btn-sm bg-info text-white rounded-1" id="next-btn" form="answer-form">Save & Next</button>
                     </div>
                 </div>
             </div>
@@ -132,33 +128,20 @@
                     <div class="px-2" style="background-color: #afdaec;">
                         <span class="text-uppercase fw-bold">Section :</span> <span>Active Test</span>
                     </div>
-                    <div class="question-buttons px-2 py-2">
-                        <button class="no-not-answered">1</button>
-                        <button class="no-answered">2</button>
-                        <button class="no-marked">3</button>
-                        <button class="no-not-visited">4</button>
-                        <button class="no-marked-answered">5</button>
-                        <button class="no-not-answered">6</button>
-                        <button>7</button>
-                        <button>8</button>
-                        <button>9</button>
-                        <button>10</button>
-                        <button>11</button>
-                        <button>12</button>
-                        <button>13</button>
-                        <button>14</button>
-                        <button>15</button>
-                        <button>16</button>
-                        <button>17</button>
-                        <button>18</button>
-                        <button>19</button>
-                        <button>20</button>
-                        <button>21</button>
-                        <button>22</button>
-                        <button>23</button>
-                        <button>24</button>
-                        <button>25</button>
+                    <div class="question-buttons">
+
                     </div>
+<!--                    <div class="question-buttons px-2 py-2">-->
+<!--                        <button class="no-not-answered">1</button>-->
+<!--                        <button class="no-answered">2</button>-->
+<!--                        <button class="no-marked">3</button>-->
+<!--                        <button class="no-not-visited">4</button>-->
+<!--                        <button class="no-marked-answered">5</button>-->
+<!--                        <button class="no-not-answered">6</button>-->
+<!--                        <button>7</button>-->
+<!--                        <button>8</button>-->
+<!--                        <button>9</button>-->
+<!--                    </div>-->
                 </div>
                 <div class="mt-auto px-2 py-2 bg-secondary-subtle border-top border-info-subtle">
                     <div class="d-flex justify-content-between flex-wrap gap-2">
@@ -166,7 +149,7 @@
                         <button class="btn btn-sm border-info-subtle bg-info-subtle flex-grow-1">Instructions</button>
                     </div>
                     <div class="mt-2">
-                        <button class="btn btn-sm border-info bg-info text-white" style="width: 100%;">Submit
+                        <button id="submit-btn" class="btn btn-sm border-info bg-info text-white" style="width: 100%;">Submit
                             Test</button>
                     </div>
                 </div>
@@ -176,7 +159,11 @@
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        var data={{data|safe}}
+    </script>
     <script src="{%static 'live_test/js/script.js'%}"></script>
+
 </body>
 
 </html>
