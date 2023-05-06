@@ -1,141 +1,182 @@
-
-
-{% load static %}
+{%load static%}
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MySkyPower / CREATIVE PRODUCTION GROUP We are the producers of your ideas. The workshop – the craftsmen – the designers – the engineers. Together we are one. One group of talented people who harness the power to build big ideas. From handmade to high- tech. With you we create. Bring us your ideas, designs, and dreams and we will build them. Whatever the scale. EVERY DAY WE BUILD BIG IDEAS We are MySkyPower." />
-    <meta property="og:title" content="My Sky Power | MSP />
-    <meta property="og:description" content="MySkyPower / CREATIVE PRODUCTION GROUP We are the producers of your ideas. The workshop – the craftsmen – the designers – the engineers. Together we are one. One group of talented people who harness the power to build big ideas. From handmade to high- tech. With you we create. Bring us your ideas, designs, and dreams and we will build them. Whatever the scale. EVERY DAY WE BUILD BIG IDEAS We are MySkyPower." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.myskypower.net/" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    {% comment %} <title>Awesome Quiz App | Ali Aslan</title> {% endcomment %}
-    <link rel="stylesheet" href="{%static 'live_test/style.css'%}">
-    <!-- FontAweome CDN Link for Icons-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <title>Test Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"
+        referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{%static 'live_test/css/style.css'%}" />
 </head>
+
 <body>
-
-    {% comment %} Nav Bar {% endcomment %}
-
-    {% comment %} <nav class="navbar bg-body-tertiary" > {% endcomment %}
-        {% comment %} <div class="container-fluid" >
-          <span class="navbar-text">
-            Navbar text with an inline element
-          </span> {% endcomment %}
-        {% comment %} </div> {% endcomment %}
-        <nav class="navbar" style="background-color: #e3f2fd;">
-            <!-- Navbar content -->
-            <div class="spinner-grow text-danger text-center" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-            <b>UPSC Mains English</b>
-            <span class="navbar-text">
-            <button type="button" class="btn btn-primary"><a href="/student/dashboard">Back</a></button>
-
-            {% comment %} <b>UPSC Mains English</b> {% endcomment %}
-          </span>
-        <div class="container-fluid" >
-          {% comment %} <span class="navbar-text">
-            <button type="button" class="btn btn-primary"><a href="/student/dashboard">Back</a></button>
-
-            <b>UPSC Mains English</b>
-          </span>  {% endcomment %}
-          </nav>
-
-    {% comment %} <nav class="navbar bg-body-primary">
+    <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
-        </div>
-      </nav> {% endcomment %}
-      {% comment %} <nav class="navbar bg-body-tertiary">
-        <div class="container">
-          <a class="navbar-brand" href="#">
-            <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Bootstrap" width="30" height="24">
-          </a>
-        </div>
-      </nav> {% endcomment %}
-      {% comment %} Navbar {% endcomment %}
-    <!-- start Quiz button -->
-    <div class="start_btn"><button>Start Test Paper</button></div>
-
-    <!-- Info Box -->
-    <div class="info_box">
-        <div class="info-title"><span>Some Rules of this Quiz</span></div>
-        <div class="info-list">
-            <div class="info">1. You will have only <span>15 seconds</span> per each question.</div>
-            <div class="info">2. Once you select your answer, it can't be undone.</div>
-            <div class="info">3. You can't select any option once time goes off.</div>
-            <div class="info">4. You can't exit from the Quiz while you're playing.</div>
-            <div class="info">5. You'll get points on the basis of your correct answers.</div>
-        </div>
-        <div class="buttons">
-            <button class="quit">Exit Quiz</button>
-            <button class="restart">Continue</button>
-        </div>
-    </div>
-    
-
-    <!-- Quiz Box -->
-    <div class="quiz_box">
-        <header>
-            <div class="title">Awesome Quiz Application</div>
-            <div class="timer">
-                <div class="time_left_txt">Time Left</div>
-                <div class="timer_sec">15</div>
+            <div>
+                <a class="navbar-brand" href="#">Tease Your Brain</a>
+                <span>Test Name</span>
             </div>
-            <div class="time_line"></div>
-        </header>
-        <section>
-            <div class="que_text">
-                <!-- Here I've inserted question from JavaScript -->
+
+            <div class="bg-secondary-subtle px-2 py-1">
+                Time Left
+                <span class="bg-secondary text-white px-1" id="hour-left">00</span> :
+                <span class="bg-secondary text-white px-1" id="min-left">00</span> :
+                <span class="bg-secondary text-white px-1" id="sec-left">00</span>
             </div>
-            <div class="option_list">
-                <!-- Here I've inserted options from JavaScript -->
+            <div class="d-flex justify-content-between">
+                <button class="btn btn-sm border border-info text-info rounded-1 mx-2">Switch Full Screen</button>
+                <button class="btn btn-sm border border-info text-info rounded-1 mx-2">Pause</button>
             </div>
-        </section>
-
-        
-
-
-        <!-- footer of Quiz Box -->
-        <footer>
-            <div class="total_que">
-                <!-- Here I've inserted Question Count Number from JavaScript -->
+        </div>
+    </nav>
+    <section class="container-fluid custom-height d-flex flex-column">
+        <div class="row flex-grow-1" style="position: relative;">
+            <div class="col-10 px-0 d-flex flex-column active-sidebar" id="main-section">
+                <div class="bg-secondary-subtle px-2 py-1"><span class="text-uppercase">Sections</span> |
+                    <div class="d-inline-block ms-5">
+                        <button class="test btn btn-sm rounded-1 text-white px-5"
+                            style="background-color: blue">Test</button>
+                    </div>
+                </div>
+                <!-- Question Number Display -->
+                <div class="d-flex justify-content-between align-items-center py-1 px-2 border">
+                    <div class="fw-medium">
+                        Question No. 1
+                    </div>
+                    <div class="d-flex justify-content-center gap-3 align-items-center" style="font-size: 0.8rem;">
+                        <div>
+                            Marks
+                            <br />
+                            <span class="bg-success text-white px-2 rounded-3"
+                                style="font-size: 0.8rem; padding-block: 0.05rem;">+2</span>
+                            <span class="bg-danger text-white px-2 rounded-3"
+                                style="font-size: 0.8rem; padding-block: 0.05rem;">-0.5</span>
+                        </div>
+                        <div>
+                            Time
+                            <br />
+                            <span style="font-size: 0.8rem;">
+                                00:00
+                            </span>
+                        </div>
+                        <div>
+                            View in
+                            <select name="language-select" id="language-select">
+                                <option value="English" checked>English</option>
+                                <option value="Hindi">Hindi</option>
+                            </select>
+                        </div>
+                        <div>⚠️ Report</div>
+                    </div>
+                </div>
+                <!--Question and MCQs -->
+                <div class="px-2 py-2 question-display-area">
+                    Select the correct option that indicates the arrangement of the given words in the order in
+                    which they appera in an English dictionary
+                    <br />
+                    <ol>
+                        <li>Petitionary</li>
+                        <li>Petitioning</li>
+                        <li>Petition</li>
+                        <li>Petitioned</li>
+                    </ol>
+                    <div>
+                        <input type="radio" name="question" value="" id="choice-1">
+                        <label for="choice-1">3, 1, 4, 5, 2</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="question" value="" id="choice-2">
+                        <label for="choice-2">3, 1, 5, 4, 2</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="question" value="" id="choice-3">
+                        <label for="choice-3">4, 1, 2, 3, 5</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="question" value="" id="choice-4">
+                        <label for="choice-4">1, 2, 3, 4, 5</label>
+                    </div>
+                </div>
+                <div
+                    class="mt-auto px-2 py-2 d-flex justify-content-between flex-wrap gap-2 bg-secondary-subtle border-top">
+                    <div>
+                        <button class="btn btn-sm border-info-subtle bg-info-subtle rounded-1">Mark for Review &
+                            Next</button>
+                        <button class="btn btn-sm border-info-subtle bg-info-subtle rounded-1">Clear Response</button>
+                    </div>
+                    <div>
+                        <button class="btn btn-sm bg-info text-white rounded-1">Save & Next</button>
+                    </div>
+                </div>
             </div>
-            <button class="next_btn">Next Que</button>
-        </footer>
-    </div>
-
-    <!-- Result Box -->
-    <div class="result_box">
-        <div class="icon">
-            <i class="fas fa-crown"></i>
+            <div class="col-2 px-0 d-flex flex-column active-sidebar" id="sidebar"
+                style="position:relative;background-color: #d7edf6;">
+                <button class="sidebar-toggler" onclick="sidebarToggler()"><i class="fa fa-angle-right"></i></button>
+                <div class="px-3 py-2">
+                    Icon & Name
+                </div>
+                <div class="d-flex flex-wrap px-3 py-3 number-details border border-start-0 border-end-0">
+                    <div><span class="no-answered">0</span>Answered</div>
+                    <div><span class="no-marked">0</span>Marked</div>
+                    <div><span class="no-not-visited">0</span>Not Visited</div>
+                    <div><span class="no-marked-answered">0</span>Marked and answered</div>
+                    <div><span class="no-not-answered">0</span>Not Answered</div>
+                </div>
+                <!-- Number and Button Section -->
+                <div>
+                    <div class="px-2" style="background-color: #afdaec;">
+                        <span class="text-uppercase fw-bold">Section :</span> <span>Active Test</span>
+                    </div>
+                    <div class="question-buttons px-2 py-2">
+                        <button class="no-not-answered">1</button>
+                        <button class="no-answered">2</button>
+                        <button class="no-marked">3</button>
+                        <button class="no-not-visited">4</button>
+                        <button class="no-marked-answered">5</button>
+                        <button class="no-not-answered">6</button>
+                        <button>7</button>
+                        <button>8</button>
+                        <button>9</button>
+                        <button>10</button>
+                        <button>11</button>
+                        <button>12</button>
+                        <button>13</button>
+                        <button>14</button>
+                        <button>15</button>
+                        <button>16</button>
+                        <button>17</button>
+                        <button>18</button>
+                        <button>19</button>
+                        <button>20</button>
+                        <button>21</button>
+                        <button>22</button>
+                        <button>23</button>
+                        <button>24</button>
+                        <button>25</button>
+                    </div>
+                </div>
+                <div class="mt-auto px-2 py-2 bg-secondary-subtle border-top border-info-subtle">
+                    <div class="d-flex justify-content-between flex-wrap gap-2">
+                        <button class="btn btn-sm border-info-subtle bg-info-subtle flex-grow-1">Question Paper</button>
+                        <button class="btn btn-sm border-info-subtle bg-info-subtle flex-grow-1">Instructions</button>
+                    </div>
+                    <div class="mt-2">
+                        <button class="btn btn-sm border-info bg-info text-white" style="width: 100%;">Submit
+                            Test</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="complete_text">You've completed the Quiz!</div>
-        <div class="score_text">
-            <!-- Here I've inserted Score Result from JavaScript -->
-        </div>
-        <div class="buttons">
-            <button class="restart">Replay Quiz</button>
-            <button class="quit">Quit Quiz</button>
-        </div>
-    </div>
+    </section>
 
-    <script>
-        var data={{data|safe}}
-    </script>
-
-    <!-- Inside this JavaScript file I've inserted Questions and Options only -->
-    <script src="{%static 'live_test/js/questions.js'%}"></script>
-
-    <!-- Inside this JavaScript file I've coded all Quiz Codes -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{%static 'live_test/js/script.js'%}"></script>
-
 </body>
+
 </html>
